@@ -45,8 +45,8 @@ function gameController() {
     {"21": "", "22": "", "23": ""}
   ];
 
-  // while (gameFinish === false) {
-    // Prompt input and make sure it falls within the board indices
+  while (gameFinish === false) {
+  //   Prompt input and make sure it falls within the board indices
     do {
       playerInputRow = parseInt(prompt("Enter row: "));
       playerInputColumn = parseInt(prompt("Enter column: "));
@@ -55,30 +55,14 @@ function gameController() {
 
     if (nextPlayer === false) {
       gameBoard.insertPlayerInput(playerInputRow, playerInputColumn, playerOne.value);
-      boardStatus[]
-
       nextPlayer = true;
 
     } else {
       gameBoard.insertPlayerInput(playerInputRow, playerInputColumn, playerTwo.value);
-
-
       nextPlayer = false;
-    }
-
-    // Add a win condition
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        if (gameBoard.getBoard([i][j]) === "X") {
-          alert("Player 1 win");
-          gameFinish = true
-        } else 
-      }
     }
   }
   
-  
-
 
 }
 
