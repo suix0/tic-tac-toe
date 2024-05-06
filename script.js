@@ -26,8 +26,6 @@ function player(value) {
   return {increaseScore, value}
 }
 
-
-
 function gameController() {
   const playerOne = player("X");
   const playerTwo = player("O");
@@ -37,9 +35,9 @@ function gameController() {
   let playerInputColumn;
   let gameFinish = false;
   let nextPlayer = false;
+  let bucket = 0;
 
-
-  while (gameFinish === false) {
+  while (gameFinish === true) {
   //   Prompt input and make sure it falls within the board indices
     do {
       playerInputRow = parseInt(prompt("Enter row: "));
@@ -60,7 +58,6 @@ function gameController() {
     }
 
     console.table(gameBoard.getBoard());
-
     
     // Implement first win conditions for playerOne
     // Check for each row
@@ -90,7 +87,6 @@ function gameController() {
     } else if (gameBoard.getBoard()[0][2] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[2][0] === "X") {
       gameFinish = true;
       alert("Player 1 win");
-
       // Check for win conditions for player 2
     } else if (gameBoard.getBoard()[0][0] === "O" && gameBoard.getBoard()[0][1] === "O" && gameBoard.getBoard()[0][2] === "O") {
       alert("Player 2 win");
@@ -119,6 +115,13 @@ function gameController() {
       gameFinish = true;
       alert("Player 2 win");
     } 
+    bucket++;
+
+    if (bucket === 9 && gameFinish === false) {
+      alert("DRAW");
+      gameFinish = true;
+    }
+
   }
 }
 
