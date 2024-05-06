@@ -61,45 +61,64 @@ function gameController() {
 
     console.table(gameBoard.getBoard());
 
-    // Check for rows if all are match for playerOne
-    // If it is, end game
-    for (let i = 0; i < 3; i++) {
-      // Implement first win conditions for playerOne
-      // Check for each row
-      if (gameBoard.getBoard()[0][i] === "X" && gameBoard.getBoard()[0][i + 1] === "X" && gameBoard.getBoard()[0][i + 2] === "X") {
-        alert("Player 1 win");
-        gameFinish = true;
+    
+    // Implement first win conditions for playerOne
+    // Check for each row
+    if (gameBoard.getBoard()[0][0] === "X" && gameBoard.getBoard()[0][1] === "X" && gameBoard.getBoard()[0][2] === "X") {
+      alert("Player 1 win");
+      gameFinish = true;
+    } else if (gameBoard.getBoard()[1][0] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[1][2] === "X") {
+      gameFinish = true;
+      alert("Player 1 win");
+    } else if (gameBoard.getBoard()[2][0] === "X" && gameBoard.getBoard()[2][1] === "X" && gameBoard.getBoard()[2][2] === "X") {
+      gameFinish = true;
+      alert("Player 1 win");
+      // Check for each columns 
+    } else if (gameBoard.getBoard()[0][0] === "X" && gameBoard.getBoard()[1][0] === "X" && gameBoard.getBoard()[2][0] === "X") {
+      gameFinish = true;
+      alert("Player 1 win");
+    } else if (gameBoard.getBoard()[0][1] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[2][1] === "X") {
+      gameFinish = true;
+      alert("Player 1 win");
+    } else if (gameBoard.getBoard()[0][2] === "X" && gameBoard.getBoard()[1][2] === "X" && gameBoard.getBoard()[2][2] === "X") {
+      gameFinish = true;
+      alert("Player 1 win");
+      // Check for each diagonals
+    } else if (gameBoard.getBoard()[0][0] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[2][2] === "X") {
+      gameFinish = true;
+      alert("Player 1 win");
+    } else if (gameBoard.getBoard()[0][2] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[2][0] === "X") {
+      gameFinish = true;
+      alert("Player 1 win");
 
-      } else if (gameBoard.getBoard()[1][i] === "X" && gameBoard.getBoard()[1][i + 1] === "X" && gameBoard.getBoard()[1][i + 2] === "X") {
-        gameFinish = true;
-        alert("Player 1 win");
-
-      } else if (gameBoard.getBoard()[2][i] === "X" && gameBoard.getBoard()[2][i + 1] === "X" && gameBoard.getBoard()[2][i + 2] === "X") {
-        gameFinish = true;
-        alert("Player 1 win");
-
-        // Check for each columns 
-      } else if (gameBoard.getBoard()[i][0] === "X" && gameBoard.getBoard()[i + 1][0] === "X" && gameBoard.getBoard()[i + 2][0] === "X") {
-        gameFinish = true;
-        alert("Player 1 win");
-
-      } else if (gameBoard.getBoard()[i][1] === "X" && gameBoard.getBoard()[i + 1][1] === "X" && gameBoard.getBoard()[i + 2][1] === "X") {
-        gameFinish = true;
-        alert("Player 1 win");
-
-      } else if (gameBoard.getBoard()[i][2] === "X" && gameBoard.getBoard()[i + 1][2] === "X" && gameBoard.getBoard()[i + 2][2] === "X") {
-        gameFinish = true;
-        alert("Player 1 win");
-
-        // Check for each diagonals
-      } else if (gameBoard.getBoard()[0][i] === "X" && gameBoard.getBoard()[1][i + 1] === "X" && gameBoard.getBoard()[2][i + 2] === "X") {
-        gameFinish = true;
-        alert("Player 1 win");
-      } else if (gameBoard.getBoard()[0][i + 2] === "X" && gameBoard.getBoard()[1][i + 1] === "X" && gameBoard.getBoard()[2][i] === "X") {
-        gameFinish = true;
-        alert("Player 1 win");
-      } 
-    }
+      // Check for win conditions for player 2
+    } else if (gameBoard.getBoard()[0][0] === "O" && gameBoard.getBoard()[0][1] === "O" && gameBoard.getBoard()[0][2] === "O") {
+      alert("Player 2 win");
+      gameFinish = true;
+    } else if (gameBoard.getBoard()[1][0] === "O" && gameBoard.getBoard()[1][1] === "O" && gameBoard.getBoard()[1][2] === "O") {
+      gameFinish = true;
+      alert("Player 2 win");
+    } else if (gameBoard.getBoard()[2][0] === "O" && gameBoard.getBoard()[2][1] === "O" && gameBoard.getBoard()[2][2] === "O") {
+      gameFinish = true;
+      alert("Player 2 win");
+      // Check for each columns 
+    } else if (gameBoard.getBoard()[0][0] === "O" && gameBoard.getBoard()[1][0] === "O" && gameBoard.getBoard()[2][0] === "O") {
+      gameFinish = true;
+      alert("Player 2 win");
+    } else if (gameBoard.getBoard()[0][1] === "O" && gameBoard.getBoard()[1][1] === "O" && gameBoard.getBoard()[2][1] === "O") {
+      gameFinish = true;
+      alert("Player 2 win");
+    } else if (gameBoard.getBoard()[0][2] === "O" && gameBoard.getBoard()[1][2] === "O" && gameBoard.getBoard()[2][2] === "O") {
+      gameFinish = true;
+      alert("Player 2 win");
+      // Check for each diagonals
+    } else if (gameBoard.getBoard()[0][0] === "O" && gameBoard.getBoard()[1][1] === "O" && gameBoard.getBoard()[2][2] === "O") {
+      gameFinish = true;
+      alert("Player 2 win");
+    } else if (gameBoard.getBoard()[0][2] === "O" && gameBoard.getBoard()[1][1] === "O" && gameBoard.getBoard()[2][0] === "O") {
+      gameFinish = true;
+      alert("Player 2 win");
+    } 
   }
 }
 
