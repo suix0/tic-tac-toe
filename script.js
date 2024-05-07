@@ -121,8 +121,14 @@ function gameController() {
       alert("DRAW");
       gameFinish = true;
     }
-
   }
 }
+
+function boardToDom(className, playerValue) {
+  const boardPart = document.querySelector(`${className}`);
+  boardPart.
+
+}
+
 
 gameController();

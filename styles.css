@@ -1,0 +1,38 @@
+:root {
+  --bg-clr: #35374B;
+  --board-line-clr: #50727B;
+  --font-clr: #78A083;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+
+  height: 100svh;
+  background-color: var(--bg-clr);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  /* border: 1px solid var(--board-line-clr); */
+  width: max-content;
+  height: max-content;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 150px);
+}
+
+
+.board > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid var(--board-line-clr);
+  color: var(--font-clr);
+  font-size: 6rem;
+}
