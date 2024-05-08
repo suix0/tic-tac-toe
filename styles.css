@@ -4,34 +4,59 @@
   --font-clr: #78A083;
 }
 
-body{
+* {
   margin: 0;
   padding: 0;
+}
 
+body{
   height: 100svh;
   background-color: var(--bg-clr);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6rem;
   align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+header > h1 {
+  color: var(--font-clr);
+  font-size: 4rem;
+}
+
+header > p {
+  color:var(--font-clr);
+  font-size: 1rem;
+}
+
 
 .board {
-  /* border: 1px solid var(--board-line-clr); */
+  display: grid;
   width: max-content;
   height: max-content;
-
-  display: grid;
-
   grid-template-columns: repeat(3, 200px);
   grid-template-rows: repeat(3, 150px);
+  margin-bottom: auto;
 }
+
+.boardSquare:hover {
+  cursor: pointer;
+}
+
 
 
 .board > div {
   display: flex;
   justify-content: center;
   align-items: center;
-
   border: 1px solid var(--board-line-clr);
   color: var(--font-clr);
   font-size: 6rem;

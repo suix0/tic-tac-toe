@@ -26,6 +26,20 @@ function player(value) {
   return {increaseScore, value}
 }
 
+function boardToDom(className, playerValue) {
+  const boardPart = document.querySelector(`#_${className}`);
+  boardPart.innerText = playerValue;
+}
+
+function boardSquaresEventListener() {
+  const squares = document.getElementsByClassName("boardSquare");
+  [...squares].forEach(square => {
+    square.addEventListener('click', () => {
+      console.log(square);
+    })
+  })
+}
+
 function gameController() {
   const playerOne = player("X");
   const playerTwo = player("O");
@@ -37,7 +51,7 @@ function gameController() {
   let nextPlayer = false;
   let bucket = 0;
 
-  while (gameFinish === true) {
+  // while (gameFinish === false) {
   //   Prompt input and make sure it falls within the board indices
     do {
       playerInputRow = parseInt(prompt("Enter row: "));
@@ -47,13 +61,17 @@ function gameController() {
         alert("Someone made a move there already. Try again.");
       }
     } while ((playerInputRow > 3 || playerInputRow < 1) && (playerInputColumn > 3 || playerInputColumn < 1));
+    
+    boardSquaresEventListener();
 
     if (nextPlayer === false) {
       gameBoard.insertPlayerInput(playerInputRow, playerInputColumn, playerOne.value);  
+      boardToDom((playerInputRow - 1) + "" + (playerInputColumn - 1), playerOne.value);
       nextPlayer = true;
 
     } else {
       gameBoard.insertPlayerInput(playerInputRow, playerInputColumn, playerTwo.value);
+      boardToDom((playerInputRow - 1) + "" + (playerInputColumn - 1), playerTwo.value);
       nextPlayer = false;
     }
 
@@ -122,13 +140,7 @@ function gameController() {
       gameFinish = true;
     }
   }
-}
-
-function boardToDom(className, playerValue) {
-  const boardPart = document.querySelector(`${className}`);
-  boardPart.
-
-}
+// }
 
 
 gameController();
