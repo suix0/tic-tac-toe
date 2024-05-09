@@ -14,8 +14,8 @@ body{
   background-color: var(--bg-clr);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 6rem;
+  justify-content: flex-start;
+  gap: 10rem;
   align-items: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -44,11 +44,11 @@ header > p {
   height: max-content;
   grid-template-columns: repeat(3, 200px);
   grid-template-rows: repeat(3, 150px);
-  margin-bottom: auto;
 }
 
 .boardSquare:hover {
   cursor: pointer;
+  background-color: hsl(191, 7%, 21%);
 }
 
 
@@ -60,4 +60,12 @@ header > p {
   border: 1px solid var(--board-line-clr);
   color: var(--font-clr);
   font-size: 6rem;
+}
+
+.message {
+  position: fixed;
+  top: 10rem;
+  font-size: 2.5rem;
+
+  color: var(--font-clr);
 }
