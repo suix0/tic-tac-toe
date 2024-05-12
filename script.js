@@ -120,7 +120,7 @@ function gameController() {
       if (gameBoard.getBoard()[0][0] === "X" && gameBoard.getBoard()[0][1] === "X" && gameBoard.getBoard()[0][2] === "X") {
         gameStart = true;
         resetGame();
-        message.innerText = "Player 1 win";
+        message.innerText = `Player 1 win`;
       } else if (gameBoard.getBoard()[1][0] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[1][2] === "X") {
         gameStart = true;
         resetGame();
@@ -202,7 +202,7 @@ function resetGame() {
   const resetBtn = document.createElement("a");
   resetBtn.innerText = "Restart";
   resetBtn.classList.add("restart");
-  resetBtn.setAttribute("href", "/index.html")
+  resetBtn.setAttribute("href", "/tic-tac-toe")
   document.body.appendChild(resetBtn);
 }
 
