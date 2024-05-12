@@ -108,7 +108,8 @@ header > p {
   margin: 0 5rem;
 }
 
-.gameStartBtn {
+.gameStartBtn,
+.gameRestartBtn {
   padding: 6px;
   background-color: var(--board-line-clr);
   height: 30px;
@@ -119,14 +120,7 @@ header > p {
   border: 1px solid var(--bg-clr);
 }
 
-.gameStartBtn:hover {
-  cursor: pointer;
-}
-
-.restart {
-  color: var(--font-clr);
-}
-
-.restart:hover {
+.gameStartBtn:hover,
+.gameRestartBtn:hover {
   cursor: pointer;
 }

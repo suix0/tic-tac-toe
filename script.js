@@ -199,10 +199,12 @@ function gameController() {
 }
 
 function resetGame() {
-  const resetBtn = document.createElement("a");
+  const resetBtn = document.createElement("button");
+  resetBtn.classList.add("gameRestartBtn");
+  resetBtn.addEventListener('click', () => {
+    window.location.reload();
+  })
   resetBtn.innerText = "Restart";
-  resetBtn.classList.add("restart");
-  resetBtn.setAttribute("href", "/tic-tac-toe")
   document.body.appendChild(resetBtn);
 }
 
