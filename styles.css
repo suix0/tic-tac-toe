@@ -15,7 +15,7 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 10rem;
+  gap: 4rem;
   align-items: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -64,8 +64,69 @@ header > p {
 
 .message {
   position: fixed;
-  top: 10rem;
-  font-size: 2.5rem;
+  top: 8rem;
+  font-size: 2rem;
 
   color: var(--font-clr);
+}
+
+.playerField {
+  display: flex;
+  gap: 3rem;
+}
+
+.playerField div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.playerField > div > input {
+  border: 1px solid var(--bg-clr);
+  background-color: hsl(0, 3%, 74%); 
+  color: black;
+  padding: 6px;
+}
+
+.playerField button {
+  width: 50%;
+  padding: 2px;
+  border: 1px solid var(--bg-clr);
+  background-color: var(--board-line-clr);
+  border-radius: 8px;
+}
+
+.playerField button:hover {
+  cursor: pointer;
+}
+
+.playerName {
+  color: var(--font-clr);
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0 5rem;
+}
+
+.gameStartBtn {
+  padding: 6px;
+  background-color: var(--board-line-clr);
+  height: 30px;
+  width: 150px;
+  font-size: 1rem;
+  color: var(--bg-clr);
+  font-weight: bold;
+  border: 1px solid var(--bg-clr);
+}
+
+.gameStartBtn:hover {
+  cursor: pointer;
+}
+
+.restart {
+  color: var(--font-clr);
+}
+
+.restart:hover {
+  cursor: pointer;
 }

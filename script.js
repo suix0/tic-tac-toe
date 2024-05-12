@@ -18,39 +18,92 @@ const gameBoard = (function gameBoard() {
   
 })()
 
-function player(value) {
-  let score;
 
-  const increaseScore = () => score++;
 
-  return {increaseScore, value}
+let removeCount = 0;
+function createName(val, playerName, paragraphDisplay) {
+  const playerDisplay = document.querySelector(".playerField");
+  const playerNameDisplay = document.createElement(paragraphDisplay);
+
+  const playerNameDisplayDiv = val === "X" ? document.querySelector(".playerOneField") : document.querySelector(".playerTwoField");
+
+  playerNameDisplay.innerText = val === "X"? `Player 1\n${playerName}` : `Player 2\n${playerName}`;
+  playerNameDisplay.classList.add("playerName");
+  playerDisplay.appendChild(playerNameDisplay);
+  playerNameDisplayDiv.remove();
 }
 
+function displayName(player) {
+  let name;
+  const input = player.value === "X" ? document.querySelector("#playerOne") : document.querySelector("#playerTwo");
+
+    let submitInputBtn;
+    if (player.value === "X") {
+      submitInputBtn = document.querySelector(".playerOneSubmit");
+    } else {
+      submitInputBtn = document.querySelector(".playerTwoSubmit");
+    }
+
+    submitInputBtn.addEventListener('click', () => {
+      removeCount++;
+      name = input.value;
+      createName(player.value, name, "h3");
+      input.remove();
+      submitInputBtn.remove();
+
+      if (removeCount === 2) {
+        const gameStartButton = document.createElement("button");
+        gameStartButton.innerText = "Start";
+        gameStartButton.classList.add("gameStartBtn");
+        document.body.appendChild(gameStartButton);
+
+        gameStartButton.addEventListener('click', () => {
+          start = true;
+          gameController();
+          gameStartButton.remove();
+        })
+      }
+      return name;
+    })
+}
+
+function player(value) {
+  let name; 
+
+  const getName = () => name;
+
+  return {getName, value}
+};
+
+
+let start;
 function boardToDom(className, playerValue) {
-  console.log(className)
   const boardPart = document.querySelector(`#_${className}`);
   boardPart.innerText = playerValue;
 }
 
-function gameController() {
-  const playerOne = player("X");
-  const playerTwo = player("O");
+const playerOne = player("X");
+const playerTwo = player("O");
 
-  // Switch between player's turn 
+displayName(playerOne);
+displayName(playerTwo);
+
+function gameController() {
   let playerInputRow;
   let playerInputColumn;
-  let gameFinish = false;
   let nextPlayer = false;
   let bucket = 0;
-  
+  let gameStart = false;
 
   const squares = document.getElementsByClassName("boardSquare");
   const message = document.querySelector('.message');
 
-  [...squares].forEach(square => {
-    square.addEventListener('click', () => {
-      playerInputRow = parseInt(square.getAttribute("data-row"));
-      playerInputColumn = parseInt(square.getAttribute("data-column"));
+
+  if (gameStart === false) {
+    [...squares].forEach(square => {
+      square.addEventListener('click', () => {
+        playerInputRow = parseInt(square.getAttribute("data-row"));
+        playerInputColumn = parseInt(square.getAttribute("data-column"));
             
         if (gameBoard.getBoard()[playerInputRow][playerInputColumn] === " ") {
           if (nextPlayer === false) {
@@ -65,68 +118,78 @@ function gameController() {
         }
   
         if (gameBoard.getBoard()[0][0] === "X" && gameBoard.getBoard()[0][1] === "X" && gameBoard.getBoard()[0][2] === "X") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 1 win";
         } else if (gameBoard.getBoard()[1][0] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[1][2] === "X") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 1 win";
         } else if (gameBoard.getBoard()[2][0] === "X" && gameBoard.getBoard()[2][1] === "X" && gameBoard.getBoard()[2][2] === "X") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 1 win";
           // Check for each columns 
         } else if (gameBoard.getBoard()[0][0] === "X" && gameBoard.getBoard()[1][0] === "X" && gameBoard.getBoard()[2][0] === "X") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 1 win";
         } else if (gameBoard.getBoard()[0][1] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[2][1] === "X") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 1 win";
         } else if (gameBoard.getBoard()[0][2] === "X" && gameBoard.getBoard()[1][2] === "X" && gameBoard.getBoard()[2][2] === "X") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 1 win";
           // Check for each diagonals
         } else if (gameBoard.getBoard()[0][0] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[2][2] === "X") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 1 win";
         } else if (gameBoard.getBoard()[0][2] === "X" && gameBoard.getBoard()[1][1] === "X" && gameBoard.getBoard()[2][0] === "X") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 1 win";
           // Check for win conditions for player 2
         } else if (gameBoard.getBoard()[0][0] === "O" && gameBoard.getBoard()[0][1] === "O" && gameBoard.getBoard()[0][2] === "O") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 2 win";
         } else if (gameBoard.getBoard()[1][0] === "O" && gameBoard.getBoard()[1][1] === "O" && gameBoard.getBoard()[1][2] === "O") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 2 win";
         } else if (gameBoard.getBoard()[2][0] === "O" && gameBoard.getBoard()[2][1] === "O" && gameBoard.getBoard()[2][2] === "O") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 2 win";
           // Check for each columns 
         } else if (gameBoard.getBoard()[0][0] === "O" && gameBoard.getBoard()[1][0] === "O" && gameBoard.getBoard()[2][0] === "O") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 2 win";
         } else if (gameBoard.getBoard()[0][1] === "O" && gameBoard.getBoard()[1][1] === "O" && gameBoard.getBoard()[2][1] === "O") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 2 win";
         } else if (gameBoard.getBoard()[0][2] === "O" && gameBoard.getBoard()[1][2] === "O" && gameBoard.getBoard()[2][2] === "O") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 2 win";
           // Check for each diagonals
         } else if (gameBoard.getBoard()[0][0] === "O" && gameBoard.getBoard()[1][1] === "O" && gameBoard.getBoard()[2][2] === "O") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 2 win";
         } else if (gameBoard.getBoard()[0][2] === "O" && gameBoard.getBoard()[1][1] === "O" && gameBoard.getBoard()[2][0] === "O") {
-          gameFinish = true;
+          resetGame();
           message.innerText = "Player 2 win";
         } 
         bucket++;
-        if (bucket === 9 && gameFinish === false) {
+        if (bucket === 9 && gameStart === false) {
           message.innerText = "Draw";
-          gameFinish = true;
+          resetGame();
         }
       })
     })
   }
+}
+
+function resetGame() {
+  const resetBtn = document.createElement("a");
+  resetBtn.innerText = "Restart";
+  resetBtn.classList.add("restart");
+  resetBtn.setAttribute("href", "/index.html")
+  document.body.appendChild(resetBtn);
+}
+
 // }
 
 
-gameController();
+// gameController();
